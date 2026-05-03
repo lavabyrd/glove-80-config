@@ -4,7 +4,7 @@ My personal ZMK configuration for the MoErgo Glove80. Built on top of [TailorKey
 
 ## Layout
 
-Base layer is [TailorKey](https://sites.google.com/view/tailorkey) with home row mods (HRM) on ASDF / JKL;. Modifiers are CTRL / ALT / CMD / SHIFT left to right on both hands.
+Base layer is [TailorKey](https://sites.google.com/view/tailorkey) with home row mods (HRM) on ASDF / JKL;. Modifiers are CTRL / ALT / CMD / SHIFT on the left hand, SHIFT / CMD / ALT / CTRL on the right.
 
 ### Layers
 
@@ -39,7 +39,7 @@ Media keys on the base layer — brightness, previous, next, play/pause, mute, v
 ### Key remaps
 
 - **PgUp** → `Cmd+Shift+4` (area screenshot)
-- **PgDn** → `Cmd+\`` ` (cycle windows of current app)
+- **PgDn** → Cmd+` (cycle windows of current app)
 
 ### Dvorak
 
