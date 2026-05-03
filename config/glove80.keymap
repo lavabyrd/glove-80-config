@@ -72,6 +72,7 @@
 #define LAYER_MouseFast 6
 #define LAYER_MouseWarp 7
 #define LAYER_Magic 8
+#define LAYER_Dvorak 9
 
 /* To deal with the situation where there is no Lower layer, to keep &lower happy */
 #ifndef LAYER_Lower
@@ -687,7 +688,7 @@
             timeout-ms = <50>;
             key-positions = <POS_RH_C5R1 POS_RH_C5R2>;
             bindings = <&kp F11>;
-            layers = <LAYER_HRM_macOS>;
+            layers = <LAYER_HRM_macOS LAYER_Dvorak>;
         };
 
         // F12 on RH_C6 and RH_R1+R2 - TailorKey
@@ -695,7 +696,7 @@
             timeout-ms = <50>;
             key-positions = <POS_RH_C6R1 POS_RH_C6R2>;
             bindings = <&kp F12>;
-            layers = <LAYER_HRM_macOS>;
+            layers = <LAYER_HRM_macOS LAYER_Dvorak>;
         };
 
         // sticky "hyper" modifiers (Win + Alt + Ctrl + Shift) - TailorKey
@@ -703,7 +704,7 @@
             timeout-ms = <50>;
             key-positions = <POS_RH_T4 POS_RH_T1>;
             bindings = <&sk LG(LA(LC(LSHFT)))>;
-            layers = <LAYER_HRM_macOS>;
+            layers = <LAYER_HRM_macOS LAYER_Dvorak>;
         };
 
         // capslock when pressing both T1's - TailorKey
@@ -711,7 +712,7 @@
             timeout-ms = <50>;
             key-positions = <POS_LH_T1 POS_RH_T1>;
             bindings = <&kp CAPS>;
-            layers = <LAYER_HRM_macOS>;
+            layers = <LAYER_HRM_macOS LAYER_Dvorak>;
         };
 
         // sticky "meh" modifiers (Alt + Ctrl + Shift) - TailorKey
@@ -719,7 +720,7 @@
             timeout-ms = <50>;
             key-positions = <POS_RH_T5 POS_RH_T4>;
             bindings = <&sk LA(LC(LSHFT))>;
-            layers = <LAYER_HRM_macOS>;
+            layers = <LAYER_HRM_macOS LAYER_Dvorak>;
         };
     };
 };
@@ -766,7 +767,7 @@
         layer_Lower {
             bindings = <
          &kp C_BRI_DN  &kp C_BRI_UP      &kp C_PREV      &kp C_NEXT         &kp C_PP                                                                         &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP            &none  &kp PAUSE_BREAK
-               &trans         &none           &none           &none   &kp LG(LS(N4))   &kp HOME                                                  &kp LS(N9)  &kp KP_NUM     &kp EQUAL  &kp KP_SLASH  &kp KP_MULTIPLY  &kp PRINTSCREEN
+               &trans  &to LAYER_HRM_macOS  &to LAYER_Dvorak           &none   &kp LG(LS(N4))   &kp HOME                                                  &kp LS(N9)  &kp KP_NUM     &kp EQUAL  &kp KP_SLASH  &kp KP_MULTIPLY  &kp PRINTSCREEN
                &trans         &none           &none    &kp UP_ARROW            &none    &kp END                                                  &kp LS(N0)   &kp KP_N7     &kp KP_N8     &kp KP_N9     &kp KP_MINUS   &kp SCROLLLOCK
                &trans         &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PG_UP                                                  &kp LS(N5)   &kp KP_N4     &kp KP_N5     &kp KP_N6      &kp KP_PLUS            &none
                &trans     &kp K_APP           &none         &kp F11          &kp F12  &kp PG_DN  &trans  &trans   &to 0  &trans  &trans  &trans   &kp COMMA   &kp KP_N1     &kp KP_N2     &kp KP_N3     &kp KP_ENTER           &trans
@@ -826,6 +827,17 @@
    &bootloader  &rgb_ug RGB_SPD   &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF                                                         &none   &none   &none   &none       &none     &bootloader
     &sys_reset            &none             &none            &none            &none            &none   &bt_2   &bt_3         &none   &none   &none   &none   &none   &none   &none   &none       &none      &sys_reset
          &none            &none             &none            &none            &none                    &bt_0   &bt_1  &out OUT_USB   &none   &none   &none           &none   &none   &none       &none           &none
+            >;
+        };
+
+        layer_Dvorak {
+            bindings = <
+               &trans                               &trans                            &trans                              &trans                             &trans                                                                                                                                                                              &trans                          &trans                         &trans                              &trans    &trans
+            &kp RBKT                               &trans                            &trans                              &trans                             &trans  &trans                                                                                                                          &trans                           &trans                          &trans                         &trans                              &trans  &kp LBKT
+              &trans                              &kp SQT                         &kp COMMA                            &kp DOT                              &kp P   &kp Y                                                                                                                           &kp F                            &kp G                           &kp C                          &kp R                               &kp L   &trans
+              &trans  &HRM_left_pinky_v1_TKZ LCTRL A  &HRM_left_ring_v1_TKZ LALT O  &HRM_left_middy_v1_TKZ LGUI E  &HRM_left_index_v1_TKZ LSHFT U  &kp I                                                                                                                                    &kp D  &HRM_right_index_v1_TKZ RSHFT H  &HRM_right_middy_v1_TKZ RGUI T  &HRM_right_ring_v1_TKZ LALT N  &HRM_right_pinky_v1_TKZ RCTRL S  &kp MINUS
+            &trans                              &kp SEMI                            &kp Q                              &kp J                              &kp K   &kp X                        &trans  &trans  &trans  &trans                       &trans                         &trans   &kp B                            &trans                         &kp W                        &kp V                            &kp Z  &trans
+ &trans                                        &trans                            &trans                              &trans                             &trans          &trans  &trans  &trans  &trans  &trans  &trans                                  &trans                        &trans                       &kp FSLH                            &kp EQUAL  &trans
             >;
         };
 
