@@ -1,37 +1,82 @@
-# MoErgo Glove80 Custom Configuration for ZMK
+# glove80-config
 
-![MoErgo Logo](moergo_logo.png)
+My personal ZMK configuration for the MoErgo Glove80. Built on top of [TailorKey](https://sites.google.com/view/tailorkey) by @moosy, tuned for macOS and daily use as a DevOps engineer.
 
-This repo is the official ZMK configuration of the MoErgo Glove80 wireless split contoured keyboard. Use it to develop your own keymap and easily build your own ZMK firmware to run on your Glove80.
+## Layout
 
-**NOTE: You can also customize the layout of your Glove80 keyboard with the Glove80 Layout Editor webapp. For most users Glove80 Layout Editor is the recommended and simpler option. More information is available at the official MoErgo Glove80 Support site (see resources below).**
+Base layer is [TailorKey](https://sites.google.com/view/tailorkey) with home row mods (HRM) on ASDF / JKL;. Modifiers are CTRL / ALT / CMD / SHIFT left to right on both hands.
 
-These steps will get you using your keymap on your keyboard in the fastest time possible. It uses the GitHub Actions feature to build your firmware online.
+### Layers
 
-If you are looking to dig deeper into ZMK and develop new functionality, it is recommended to follow the steps of installing ZMK as found on the official ZMK documentation site (linked below).
+| # | Name | Access |
+|---|------|--------|
+| 0 | HRM macOS | default |
+| 1 | Cursor | hold left outer thumb (tap = Backspace) |
+| 2 | Symbol | hold Space (tap = Space) |
+| 3 | Lower | hold inner left thumb (tap = tap dance → toggle) |
+| 4 | Mouse | hold right outer thumb (tap = Enter) |
+| 5–7 | Mouse slow / fast / warp | hold-tap inside Mouse layer |
+| 8 | Magic | hold far-left key (RGB, Bluetooth, bootloader) |
+| 9 | Dvorak | switch via Lower + 2 |
+
+### HRM tuning
+
+All 8 fingers use `balanced` flavor with per-finger tapping terms:
+
+| Finger | Tapping term |
+|--------|-------------|
+| Index | 250ms |
+| Middle | 260ms |
+| Ring | 270ms |
+| Pinky | 300ms |
+
+`quick-tap-ms = 175ms`, `require-prior-idle-ms = 150ms` on all fingers.
+
+### Top row
+
+Media keys on the base layer — brightness, previous, next, play/pause, mute, volume. F1–F10 are on the Lower layer. I can't remember the last time I used an F key voluntarily.
+
+### Key remaps
+
+- **PgUp** → `Cmd+Shift+4` (area screenshot)
+- **PgDn** → `Cmd+\`` ` (cycle windows of current app)
+
+### Dvorak
+
+Full hardware Dvorak layer with the same HRM modifiers on the same physical fingers — only the tap characters change. Switch layouts without touching OS settings.
+
+- **Lower + 1** → QWERTY
+- **Lower + 2** → Dvorak
+
+### Cursor layer highlights
+
+Hold the left outer thumb key to activate. Useful bits:
+
+| Key | Action |
+|-----|--------|
+| G | Cmd+C |
+| B | Cmd+V |
+| T | Cmd+X |
+| Z | Cmd+A |
+| J K L ; | ← ↑ ↓ → |
+| X / C | Select line / word |
+
+### Combos
+
+| Keys | Action |
+|------|--------|
+| Both T1 thumbs | Caps Lock |
+| RH T4 + T1 | Sticky Hyper (Cmd+Ctrl+Alt+Shift) |
+| RH T5 + T4 | Sticky Meh (Ctrl+Alt+Shift) |
+| RH outer col R1+R2 | F11 / F12 |
+
+## Flashing
+
+Releases are built automatically on every push to main via GitHub Actions. Grab `glove80.uf2` from the [latest release](../../releases/latest) and drag it onto the Glove80 USB drive while in bootloader mode.
 
 ## Resources
-- The [official MoErgo Glove80 Support](https://moergo.com/glove80-support) web site. Glove80 documentation and other technical resources.
-- The [official MoErgo Discord Server](https://moergo.com/discord). Instant conversations with other Glove80 users.
 
-- The [official ZMK Documentation](https://zmk.dev/docs) web site. Find the answers to many of your questions about ZMK Firmware.
-- The [official ZMK Discord Server](https://discord.gg/8cfMkQksSB). Instant conversations with other ZMK developers and users. Great technical resource!
-
-- The [official Glove80 ZMK Distribution](https://github.com/moergo-sc/zmk). Repositiory for ZMK firmware customized for Glove80. 
- 
-## Instructions
-1. Log into, or sign up for, your personal GitHub account.
-2. Create your own repository using this repository as a template ([instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)) and check it out on your local computer.
-3. Edit the keymap file(s) to suit your needs
-4. Commit and push your changes to your personal repo. Upon pushing it, GitHub Actions will start building a new version of your firmware with the updated keymap.
-
-## Firmware Files
-To locate your firmware files and reflash your Glove80...
-1. log into GitHub and navigate to your personal config repository you just uploaded your keymap changes to.
-2. Click "Actions" in the main navigation, and in the left navigation click the "Build" link.
-3. Select the desired workflow run in the centre area of the page (based on date and time of the build you wish to use). You can also start a new build from this page by clicking the "Run workflow" button.
-4. After clicking the desired workflow run, you should be presented with a section at the bottom of the page called "Artifacts". This section contains the results of your build, in a file called "glove80.uf2"
-5. Download the glove80.uf2
-6. Flash the firmware to Glove80 according to the user documentation on the official Glove80 Glove80 Support website (linked above)
-
-Your keyboard is now ready to use.
+- [TailorKey](https://sites.google.com/view/tailorkey) — the base layout this config builds on
+- [ZMK docs](https://zmk.dev/docs)
+- [Glove80 ZMK fork](https://github.com/moergo-sc/zmk)
+- [Glove80 support](https://moergo.com/glove80-support)

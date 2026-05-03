@@ -1,6 +1,10 @@
 name: Build
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -37,7 +41,6 @@ jobs:
   release:
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -47,7 +50,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          TAG="build-$(date -u +%Y%m%d-%H%M%S)-$(echo '${{ github.sha }}' | cut -c1-7)"
-          gh release create "$TAG" glove80.uf2 \
-            --title "$TAG" \
+          gh release create "${{ github.ref_name }}" glove80.uf2 \
+            --title "${{ github.ref_name }}" \
             --notes "Commit: ${{ github.sha }}"
