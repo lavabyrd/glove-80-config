@@ -64,15 +64,14 @@
 
 /* Automatically generated layer name defines */
 #define LAYER_HRM_macOS 0
-#define LAYER_Typing 1
-#define LAYER_Cursor 2
-#define LAYER_Symbol 3
-#define LAYER_Lower 4
-#define LAYER_Mouse 5
-#define LAYER_MouseSlow 6
-#define LAYER_MouseFast 7
-#define LAYER_MouseWarp 8
-#define LAYER_Magic 9
+#define LAYER_Cursor 1
+#define LAYER_Symbol 2
+#define LAYER_Lower 3
+#define LAYER_Mouse 4
+#define LAYER_MouseSlow 5
+#define LAYER_MouseFast 6
+#define LAYER_MouseWarp 7
+#define LAYER_Magic 8
 
 /* To deal with the situation where there is no Lower layer, to keep &lower happy */
 #ifndef LAYER_Lower
@@ -742,17 +741,6 @@
             >;
         };
 
-        layer_Typing {
-            bindings = <
-               &trans  &trans  &trans  &trans  &trans                                                                  &trans  &trans  &trans    &trans  &trans
-               &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans    &trans  &trans
-               &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans    &trans  &trans
-               &trans   &kp A   &kp S   &kp D   &kp F  &trans                                                  &trans   &kp J   &kp K   &kp L  &kp SEMI  &trans
-               &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans
- &magic LAYER_Magic 0  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans    &trans  &trans
-            >;
-        };
-
         layer_Cursor {
             bindings = <
      &none      &none                          &none                          &none      &none                                                                                                                                                                              &none          &none          &none      &none      &none
@@ -833,7 +821,7 @@
         layer_Magic {
             bindings = <
  &mstr1_v1_TKZ            &none             &none            &none            &none                                                                                  &none   &none   &none  &bt BT_CLR  &bt BT_CLR_ALL
-         &to 0            &none  &to LAYER_Typing            &none            &none            &none                                                         &none   &none   &none   &none       &none           &none
+         &to 0            &none             &none            &none            &none            &none                                                         &none   &none   &none   &none       &none           &none
          &none  &rgb_ug RGB_SPI   &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &rgb_ug RGB_TOG                                                         &none   &none   &none   &none       &none           &none
    &bootloader  &rgb_ug RGB_SPD   &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF                                                         &none   &none   &none   &none       &none     &bootloader
     &sys_reset            &none             &none            &none            &none            &none   &bt_2   &bt_3         &none   &none   &none   &none   &none   &none   &none   &none       &none      &sys_reset
